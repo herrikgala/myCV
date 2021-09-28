@@ -157,7 +157,7 @@
 #section3 > section:nth-child(1){
     width: 100vw;
     height: 100%;
-    background-image: url('../public/images/web2.jpg');
+    background-image: url('../public/images/web2.webp');
     background-size: 100vw auto;
     background-position: center;
     position: relative;
@@ -166,7 +166,7 @@
 #section3 > section:nth-child(2){
     width: 100vw;
     height: 100%;
-    background-image: url('../public/images/petroleum.jpg');
+    background-image: url('../public/images/petroleum.webp');
     background-size: 100vw auto;
     background-position: center;
     position: relative;

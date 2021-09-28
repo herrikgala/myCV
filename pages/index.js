@@ -284,7 +284,7 @@ export default function MainPage(props){
                   He creates user interfaces but also could manage backend side of apps.
                   Muhammetnur Amandurdyev loves both the mountains and deserts of his beloved country and tries to improve his varied activities.
                 </p>
-              <Image src='/images/sand.jpg' alt="img" priority layout='responsive' width={902} height={570}/>
+              <Image src='/images/sand.webp' alt="img" priority layout='responsive' width={902} height={570}/>
             </div>
         </section>
         
