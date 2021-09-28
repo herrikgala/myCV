@@ -1,0 +1,21 @@
+{
+  "name": "showup",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 4000",
+    "build": "next build",
+    "export":"next export",
+    "start": "next start"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "gray-matter": "^4.0.3",
+    "gsap": "^3.7.1",
+    "next": "10.2.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "scrollmagic": "^2.0.8",
+    "scrollmagic-plugin-gsap": "^1.0.4"
+  }
+}

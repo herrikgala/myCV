@@ -1,0 +1,440 @@
+#section1 > div{
+    font-weight: 300;
+    font-size: 14vw;
+    padding: 0vh 2vw;
+    letter-spacing: -0.4vw;
+    position: relative;
+}
+
+
+#section1 > div > span{
+    display: inline-block;
+}
+
+#scroll{
+    font-size: 2vw;
+    padding-left: 20%;
+}
+
+
+#section2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    /* background-color: white; */
+    z-index: 3;
+}
+
+#section2 > div:nth-child(1){
+    position: fixed;
+    font-size: 12vw;
+    font-variant-caps: normal;
+    font-weight: 400;
+    letter-spacing: -0.4vw;
+    z-index: 5;
+    color: white;
+    mix-blend-mode: difference;
+    text-align: center;
+    width: 100%;
+    margin: 5% auto;
+}
+
+.paralaxContainer{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+}
+
+.paralaxContainer:nth-child(2){
+    background-color: white;
+    z-index: 3;
+}
+
+.paralaxContainer:nth-child(3){
+    background-color: black;
+    z-index: 3;
+}
+
+.cv{
+    position: fixed;
+    right: 0;
+    bottom: 18%;
+    height: 30vh;
+    width: 100%;
+    z-index: 5;
+    color: white;
+}
+
+.cvGrid{
+    width: 80%;
+    margin: auto;
+    height: 50%;
+    display: grid;
+    grid-template-columns: auto auto;
+    z-index: 6;
+}
+
+.cvGrid > div:nth-child(1){
+    border-right: 1px solid white;
+    height: 100%;
+    text-align: right;
+    padding: 0 1vw;
+    font-size: 2vw;
+    position: relative;
+}
+
+.cvGrid > div:nth-child(2){
+    height: 100%;
+    padding: 0 1vw;
+    font-size: 2vw !important;
+    text-align: left;
+    position: relative;
+}
+
+/* Certificates 🎄🖼🎞🎨 */
+
+.certificatesWrapper{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 4;
+}
+
+.certificatesWrapper > div{
+    height: 25vh;
+    border-bottom: .1vh solid rgb(255, 255, 255, 1);
+    border-left: .1vh solid rgb(255, 255, 255, 1);
+    padding-bottom: .1vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.certificatesWrapper > div > .layer{
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 0%;
+}
+
+.certificatesWrapper > div > div > span:nth-child(1){
+    font-size: 3.5vw;
+    color: white;
+}
+
+.certificatesWrapper > div > div > span:nth-child(2){
+    font-size: 2vw;
+    color: white;
+    opacity: .9;
+    display: block;
+}
+
+/* Third section (quote, images, skills) 🎃🎄🎈*/
+
+
+#section3{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: white;
+    z-index: -1;
+    opacity: 0;
+    display: flex;
+    width: 500vw;
+}
+
+#section3 > section:nth-child(1){
+    width: 100vw;
+    height: 100%;
+    background-image: url('../public/images/web2.jpg');
+    background-size: 100vw auto;
+    background-position: center;
+    position: relative;
+}
+
+#section3 > section:nth-child(2){
+    width: 100vw;
+    height: 100%;
+    background-image: url('../public/images/petroleum.jpg');
+    background-size: 100vw auto;
+    background-position: center;
+    position: relative;
+}
+
+.layer{
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 1️⃣ layers */
+#section3 > section:nth-child(1) > .layer:nth-child(1){
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#section3 > section:nth-child(1) > .layer:nth-child(1) > p{
+    font-size: 4vw;
+    max-width: 80%;
+    color: black;
+}
+
+#section3 > section:nth-child(1) > .layer:nth-child(2){
+    background-color: transparent;
+    transform: translate(100%);
+}
+
+#section3 > section:nth-child(1) > .layer:nth-child(3){
+    background-color: white;
+    transform: translate(200%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#section3 > section:nth-child(1) > .layer:nth-child(3) > h1{
+    font-size: 10vw;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 15%;
+    margin: 2vh 0;
+}
+
+#section3 > section:nth-child(2) > .layer:nth-child(1){
+    background-color: white;
+    transform: translate(200%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#section3 > section:nth-child(2) > .layer:nth-child(1) > h1{
+    font-size: 10vw;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 15%;
+    margin: 2vh 0;
+}
+
+.skillsGrid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 20vh;
+}
+.skillsGrid > ul{
+    list-style-type: none;
+    font-size: 1.5vw;
+    text-align: right;
+    width: max-content;
+}
+
+.skillsGrid span{
+    opacity: .5;
+}
+/* 2️⃣ layers */
+
+
+#section3 > section:nth-child(2) > .layer:nth-child(1){
+    background-color: white;
+    transform: translate(100%);
+}
+
+/* Fourth section (circle, contacts, animals) 🎃🎄🎈 */
+
+#section4{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 175vw;
+    height: 175vw;
+    border-radius: 50%;
+    background-color: black;
+    z-index: 2;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#section4 > div:nth-child(1){
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.circularTextWrapper{
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+    transform: rotate(-150deg);
+}
+
+.trainText{
+    position: absolute;
+    left: 100vw;
+    top: 0;
+    height: 100vh;
+    color: white;
+    font-size: 11vw;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#section > div > .trainText > span{
+    display: inline-block;
+}
+
+.contacts{
+    position: absolute;
+    top: -100vh;
+    left: 0;
+    background-color: black;
+    width: 100vw;
+    height: 200vh;
+}
+
+.contacts > div:nth-child(1){
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.social{
+    width: 55%;
+    height: 40vh;
+    position: relative;
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+    padding-top: 4vh;
+}
+
+.social a, .social label{
+    display: block;
+    margin: 0 auto 1vw auto;
+    padding-left: 30%;
+    text-align: left;
+    font-size: 2vw;
+    color: white;
+}
+
+.social > span:nth-child(1){
+    position: absolute;
+    top: 5vh;
+    color: white;
+    font-size: 1vw;
+}
+
+.noCookies{
+    width: 100%;
+    height: 20vh;
+    border-top: 1px solid rgb(255, 255, 255, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: rgb(255, 255, 255, 0.5);
+    font-weight: 500;
+    font-size: 1.2vw;
+}
+
+.contacts > div:nth-child(2){
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    /* background-color: tomato; */
+}
+
+.experience{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+    color: rgb(255, 255, 255, 0.5);
+    font-weight: 500;
+    font-size: 1.2vw;
+}
+
+.authors{
+    width: 100%;
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid white;
+}
+
+.authors > div{
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    font-size: 2vw;
+    color: white;
+}
+
+.authors a {
+    color: white;
+}
+
+.authors > div:nth-child(1){
+    border-right: 1px solid white;
+}
+
+.authors > div:nth-child(2){
+    border-left: 1px solid white;
+}
+
+.authors > div > span{
+    position: absolute;
+    top: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2vw;
+    color: rgb(255, 255, 255, 0.5);
+}
