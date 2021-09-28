@@ -14,8 +14,8 @@ const cv = [
     what: 'Basic education in one of the top school all over the country',
     url: 'http://www.trsosh.edu.tm/',
     urlName: 'trsosh.edu.tm',
-    img1: '/../public/images/school.jpg',
-    img2: '/../public/images/medvedev2.jpg',
+    img1: '/images/school.jpg',
+    img2: '/images/medvedev2.jpg',
     img1Size: {height: 9, width: 16},
     img2Size: {height: 100, width: 150},
   },
@@ -27,8 +27,8 @@ const cv = [
     what: `Bachelor's degree in the first higher technical university of Russia.\n Major: Drilling oil and gas wells`,
     url: 'http://en.spmi.ru/',
     urlName: 'en.spmi.ru',
-    img1: '/../public/images/mining.jpg',
-    img2: '/../public/images/putin.jpg',
+    img1: '/images/mining.jpg',
+    img2: '/images/putin.jpg',
     img1Size: {height: 2, width: 3},
     img2Size: {height: 9, width: 16},
   },
@@ -40,8 +40,8 @@ const cv = [
     what: 'Two months of internship in honorable company with great reputation',
     url: 'https:/www.dragonoil.com/',
     urlName: 'www.dragonoil.com',
-    img1: '/../public/images/rig.jpg',
-    img2: '/../public/images/storage.jpg',
+    img1: '/images/rig.jpg',
+    img2: '/images/storage.jpg',
     img1Size: {height: 2, width: 3},
     img2Size: {height: 9, width: 17},
   },
@@ -53,8 +53,8 @@ const cv = [
     what: 'A ton of experience in data managing department of huge organization. Leading frontend developer and IT specialist as well.',
     url: 'https://serhetabat-dovletabat.gov.tm/',
     urlName: 'serhetabat-dovletabat.gov.tm',
-    img1: '/../public/images/city.jpg',
-    img2: '/../public/images/soldier.jpg',
+    img1: '/images/city.jpg',
+    img2: '/images/soldier.jpg',
     img1Size: {height: 10, width: 16},
     img2Size: {height: 10, width: 16},
   }
@@ -74,7 +74,7 @@ const socials = [
   {
     id: 3,
     name: 'Telegram',
-    url: '',
+    url: 'https://t.me/Nury_Rev',
   }
   
 ]
@@ -110,7 +110,7 @@ export default function MainPage(props){
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.defaults({
-      markers: true,
+      markers: false,
       scrub: 2,
     })
 
@@ -119,7 +119,7 @@ export default function MainPage(props){
       scrollTrigger:{
         trigger: section1,
         pin: true,
-        markers: true,
+        markers: false,
         end: '+=' + ((cv.length+4)*section2.offsetWidth),
       }
     })
@@ -284,7 +284,7 @@ export default function MainPage(props){
                   He creates user interfaces but also could manage backend side of apps.
                   Muhammetnur Amandurdyev loves both the mountains and deserts of his beloved country and tries to improve his varied activities.
                 </p>
-              <Image src='/../public/images/sand.jpg' alt="img" priority layout='responsive' width={902} height={570}/>
+              <Image src='/images/sand.jpg' alt="img" priority layout='responsive' width={902} height={570}/>
             </div>
         </section>
         
@@ -452,7 +452,7 @@ export default function MainPage(props){
         <section id={styles.section4} className='section'>
           <div>
             <div id='circularTextWrapper' className={styles.circularTextWrapper}>
-              <Image src='/../public/images/circle.svg' alt="Circular text" priority layout='fill'/>
+              <Image src='/images/circle.svg' alt="Circular text" priority layout='fill'/>
             </div>
             
             <div id='trainText' className={styles.trainText}>
@@ -538,13 +538,13 @@ export default function MainPage(props){
                 <div id='social' className={styles.social}>
                   <span>ON SOCIAL MEDIA</span>
                   {socials.map((obj)=>(
-                    <a href={obj.url} target='_blank'>{obj.name}</a>
+                    <a key={obj.id} href={obj.url} target='_blank'>{obj.name}</a>
                   ))}
                 </div>
                 <div id='social' className={styles.social}>
                   <span>BY EMAIL</span>
                   <label>verf631664@gmail.com</label>
-                  <label>amandurdyev97@gmail.com</label>
+                  <label>rev631664@gmail.com</label>
                 </div>
                 <div id='noCookies' className={styles.noCookies}>
                   <span>This webpage was created without using any cookies</span>
