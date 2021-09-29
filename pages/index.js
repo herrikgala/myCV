@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from '../styles/mainPage.module.css';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -99,14 +99,31 @@ function shuffle (array){
 }
 
 export default function MainPage(props){
+  const [ready, setReady] = useState(false);
+
 
   useEffect(()=>{
-    
+    window.addEventListener('resize', ()=>{
+      window.location.reload(false)
+    })
+  },[])
+
+  useEffect(()=>{
+
+    if(!ready){
+      setReady(true);
+      return
+    }
+
+    // console.log(window.innerHeight);
+    // console.log(window.innerWidth);
+
     let section1=document.getElementsByClassName('section')[0];
     let section2=document.getElementsByClassName('section')[1];
     let section3=document.getElementsByClassName('section')[2];
     let section4=document.getElementsByClassName('section')[3];
     let spans = document.querySelectorAll(".section:nth-child(1) > div > span");
+
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.defaults({
@@ -226,12 +243,24 @@ export default function MainPage(props){
 
     tl2.from('#contacts', {yPercent: 200, duration: 30, ease: 'none'}, '>')
 
-  },[])
+  },[ready])
+
+  if(!ready){
+    return null
+  }
+
+  if(window.innerWidth/window.innerHeight<1.6){
+    return (
+      <div style={{width:'100vw', height: '100vh', fontSize: '5vw', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        Rotate your browser and continue
+      </div>
+    )
+  }
 
   return(
     <div>
       <Head>
-        <title>Fokechlanor</title>
+        <title>Muhammetnur Amandurdyev</title>
       </Head>
 
         <section id={styles.section1} className='section'>
