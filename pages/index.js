@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import styles from '../styles/mainPage.module.css';
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -79,7 +79,6 @@ const socials = [
   
 ]
 
-
 function shuffle (array){
     let currentIndex = array.length,  randomIndex;
   
@@ -100,24 +99,9 @@ function shuffle (array){
 
 export default function MainPage(props){
   const [ready, setReady] = useState(false);
+  const [alert, setAlert] = useState(false);
 
-
-  useEffect(()=>{
-    window.addEventListener('resize', ()=>{
-      window.location.reload(false)
-    })
-  },[])
-
-  useEffect(()=>{
-
-    if(!ready){
-      setReady(true);
-      return
-    }
-
-    // console.log(window.innerHeight);
-    // console.log(window.innerWidth);
-
+  function applyAnimation(){
     let section1=document.getElementsByClassName('section')[0];
     let section2=document.getElementsByClassName('section')[1];
     let section3=document.getElementsByClassName('section')[2];
@@ -243,362 +227,371 @@ export default function MainPage(props){
 
     tl2.from('#contacts', {yPercent: 200, duration: 30, ease: 'none'}, '>')
 
-  },[ready])
-
-  if(!ready){
-    return null
+    setReady(true)
   }
 
-  if(window.innerWidth/window.innerHeight<1.6){
-    return (
-      <div style={{width:'100vw', height: '100vh', fontSize: '5vw', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-        Rotate your browser and continue
-      </div>
-    )
-  }
+  useEffect(()=>{
+    window.addEventListener('resize', ()=>{
+      window.location.reload(false);
+    })
+    let invalidProportion = window.innerWidth/window.innerHeight<1.6;
+
+    if(invalidProportion){
+      setAlert(true);
+    } else{
+      applyAnimation();
+    }
+
+  },[])
 
   return(
     <div>
-      <Head>
-        <title>Muhammetnur Amandurdyev</title>
-      </Head>
+      {alert ? 
+      <div style={{width:'100vw', height: '100vh', fontSize: '5vw', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        Rotate your browser and continue
+      </div>:
+      <div style={!ready ? {opacity: '0'}: {}}>
+        <Head>
+          <title>Muhammetnur Amandurdyev</title>
+        </Head>
 
-        <section id={styles.section1} className='section'>
-            <div style={{lineHeight: 1.1}}>
-                <span>M</span>
-                <span>u</span>
-                <span>h</span>
-                <span>a</span>
-                <span>m</span>
-                <span>m</span>
-                <span>e</span>
-                <span>t</span>
-                <span>n</span>
-                <span>u</span>
-                <span>r</span>
+          <section id={styles.section1} className='section'>
+              <div style={{lineHeight: 1.1}}>
+                  <span>M</span>
+                  <span>u</span>
+                  <span>h</span>
+                  <span>a</span>
+                  <span>m</span>
+                  <span>m</span>
+                  <span>e</span>
+                  <span>t</span>
+                  <span>n</span>
+                  <span>u</span>
+                  <span>r</span>
+              </div>
+              <div style={{lineHeight: 1.1}}>
+                  <span>A</span>
+                  <span>m</span>
+                  <span>a</span>
+                  <span>n</span>
+                  <span>d</span>
+                  <span>u</span>
+                  <span>r</span>
+                  <span>d</span>
+                  <span>y</span>
+                  <span>e</span>
+                  <span>v</span>
+              </div>
+              <span id={styles.scroll}>Scroll</span>
+              <div style={{position: 'fixed', right: '1vw', bottom: '1vw', width: '20vw', padding: 0}} id='fixed'>
+                <p style={{
+                    fontSize: '2vw',
+                    letterSpacing:0,
+                    backgroundColor: 'transparent',
+                    color: 'white',
+                    bottom: '20%',
+                    fontWeight: 'light',
+                    right: '5%',
+                    position: 'absolute',
+                    zIndex: 1,
+                    width: '55%',
+                    letterSpacing: 0.3,
+                    lineHeight: 1.2,
+                  }}>
+                    <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    Muhammetnur Amandurdyev is a turkmen programmer and engineer, leading frontend developer at the state frontier service of Turkmenistan,
+                    graduated engineer from Saint Petersburg Mining university. To date he has created more than 5 projects of different complexity. <br/>
+                    <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    He creates user interfaces but also could manage backend side of apps.
+                    Muhammetnur Amandurdyev loves both the mountains and deserts of his beloved country and tries to improve his varied activities.
+                  </p>
+                <Image src='/images/sand.webp' alt="img" priority layout='responsive' width={902} height={570}/>
+              </div>
+          </section>
+          
+          <section id={styles.section2} className='section'>
+            <div style={{lineHeight: 1}}>
+              <span style={{display: 'inline-block'}}>Let's introduce</span><br/>
+              <span style={{display: 'inline-block'}}>Muhammetnur</span><br/>
+              <span style={{display: 'inline-block'}}>Amandurdyev's CV</span>
             </div>
-            <div style={{lineHeight: 1.1}}>
-                <span>A</span>
-                <span>m</span>
-                <span>a</span>
-                <span>n</span>
-                <span>d</span>
-                <span>u</span>
-                <span>r</span>
-                <span>d</span>
-                <span>y</span>
-                <span>e</span>
-                <span>v</span>
+            
+            <div className={styles.paralaxContainer} id='paralax1'/>
+
+            <div className={styles.paralaxContainer} id='paralax2'/>
+            
+            {cv.map((obj, index)=>{
+              let aspectRatio1=obj.img1Size.width / obj.img1Size.height;
+              let aspectRatio2=obj.img2Size.width / obj.img2Size.height;
+
+              return(
+                <div className={`${styles.cv} cv`} key={index}>
+                  <div className={`${styles.cvGrid} cvGrid`}>
+                    {/* left side */}
+                    <div>
+                      <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
+                      <div style={{width: `${aspectRatio1* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
+                          <Image src={obj.img1} layout='fill'/>
+                        </div>
+                      </div>
+                      
+                      <span>{obj.start} - {obj.end}</span> <br/>
+                      <p style={{ fontSize: '1.5vw'}}>
+                        <a href={obj.url} target='_blank' style={{color: 'white', textDecoration: 'underline', fontSize: '1.5vw'}}>{obj.urlName}</a>
+                      </p>
+                    </div>
+                    {/* right side */}
+                    <div>
+                      <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
+                        <div style={{width: `${aspectRatio2* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
+                          <Image src={obj.img2} layout='fill'/>
+                        </div>
+                      </div>
+
+                      <span>{obj.where}</span><br/>
+                      <p style={{fontSize: '1.5vw', width: '70%'}}>{obj.what}</p>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+
+            <div className={`certificatesWrapper ${styles.certificatesWrapper} `}>
+      
+              <div>
+                <div>
+                  <span style={{textDecoration: 'lineThrough'}}>Certificates:</span>
+                  {/* <span>University of Stavanger (Norway), April 2018</span> */}
+                </div>
+                <section className={`${styles.layer} layer`}></section>
+              </div>
+      
+              <div>
+                <div>
+                  <span>Management of Offshore Field Development</span>
+                  <span>University of Stavanger (Norway), April 2018</span>
+                </div>
+                <section className={`${styles.layer} layer`}></section>
+              </div>
+      
+              <div>
+                <div>
+                  <span>Well controll</span>
+                  <span>Saint Petersburg Mining University, May 2018</span>
+                </div>
+                <section className={`${styles.layer} layer`}></section>
+              </div>
+      
+              <div>
+                <div>
+                  <span>H2S / SCBA training</span>
+                  <span>Al Masaood oil industry supplies & services co.</span>
+                </div>
+                <section className={`${styles.layer} layer`}></section>
+              </div>
             </div>
-            <span id={styles.scroll}>Scroll</span>
-            <div style={{position: 'fixed', right: '1vw', bottom: '1vw', width: '20vw', padding: 0}} id='fixed'>
-              <p style={{
-                  fontSize: '2vw',
-                  letterSpacing:0,
-                  backgroundColor: 'transparent',
-                  color: 'white',
-                  bottom: '20%',
-                  fontWeight: 'light',
-                  right: '5%',
-                  position: 'absolute',
-                  zIndex: 1,
-                  width: '55%',
-                  letterSpacing: 0.3,
-                  lineHeight: 1.2,
-                }}>
-                  <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  Muhammetnur Amandurdyev is a turkmen programmer and engineer, leading frontend developer at the state frontier service of Turkmenistan,
-                  graduated engineer from Saint Petersburg Mining university. To date he has created more than 5 projects of different complexity. <br/>
-                  <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                  He creates user interfaces but also could manage backend side of apps.
-                  Muhammetnur Amandurdyev loves both the mountains and deserts of his beloved country and tries to improve his varied activities.
+
+          </section>
+
+          <section id={styles.section3} className='section'> 
+            <section>
+              <div className={`${styles.layer} layer`}>
+                <p id='quote'>
+                  <span>&nbsp;“Here</span> 
+                  <span>&nbsp;must</span> 
+                  <span>&nbsp;be</span> 
+                  <span>&nbsp;very</span> 
+                  <span>&nbsp;smart</span> 
+                  <span>&nbsp;and</span> 
+                  <span>&nbsp;sharp</span> 
+                  <span>&nbsp;words”</span> 
+                  <br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                  <span>&#8212;&nbsp;Frederic</span>
+                  <span>&nbsp;Schopengauer</span>
                 </p>
-              <Image src='/images/sand.webp' alt="img" priority layout='responsive' width={902} height={570}/>
-            </div>
-        </section>
-        
-        <section id={styles.section2} className='section'>
-          <div style={{lineHeight: 1}}>
-            <span style={{display: 'inline-block'}}>Let's introduce</span><br/>
-            <span style={{display: 'inline-block'}}>Muhammetnur</span><br/>
-            <span style={{display: 'inline-block'}}>Amandurdyev's CV</span>
-          </div>
-          
-          <div className={styles.paralaxContainer} id='paralax1'/>
+              </div>
+              <div className={`${styles.layer} layer`}></div>
 
-          <div className={styles.paralaxContainer} id='paralax2'/>
-          
-          {cv.map((obj, index)=>{
-            let aspectRatio1=obj.img1Size.width / obj.img1Size.height;
-            let aspectRatio2=obj.img2Size.width / obj.img2Size.height;
-
-            return(
-              <div className={`${styles.cv} cv`} key={index}>
-                <div className={`${styles.cvGrid} cvGrid`}>
-                  {/* left side */}
-                  <div>
-                    <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
-                    <div style={{width: `${aspectRatio1* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
-                        <Image src={obj.img1} layout='fill'/>
-                      </div>
-                    </div>
-                    
-                    <span>{obj.start} - {obj.end}</span> <br/>
-                    <p style={{ fontSize: '1.5vw'}}>
-                      <a href={obj.url} target='_blank' style={{color: 'white', textDecoration: 'underline', fontSize: '1.5vw'}}>{obj.urlName}</a>
-                    </p>
-                  </div>
-                  {/* right side */}
-                  <div>
-                    <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
-                      <div style={{width: `${aspectRatio2* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
-                        <Image src={obj.img2} layout='fill'/>
-                      </div>
-                    </div>
-
-                    <span>{obj.where}</span><br/>
-                    <p style={{fontSize: '1.5vw', width: '70%'}}>{obj.what}</p>
-                  </div>
+              <div className={`${styles.layer} layer`}>
+                <h1>PROGRAMMING</h1>
+                <div className={`${styles.skillsGrid} skillsGrid`}>
+                  <ul>
+                    <li>Frontend developer <span>middle</span></li>
+                    <li>HTML <span>competent</span></li>
+                    <li>CSS <span>competent</span></li>
+                    <li>Javascript <span>competent</span></li>
+                  </ul>
+                  <ul>
+                    <li>React JS <span>competent</span></li>
+                    <li>Next JS <span>competent</span></li>
+                    <li>Material UI <span>competent</span></li>
+                    <li>Redux <span>competent</span></li>
+                  </ul>
+                  <ul>
+                    <li>Vim <span> good enough</span></li>
+                    <li>Chart JS <span>good enough</span></li>
+                    <li>GSAP <span>good enough</span></li>
+                    <li>Python <span>good enough</span></li>
+                  </ul>
+                  <ul>
+                    <li>Data scientist <span>junior</span></li>
+                    <li>Linear algebra <span>competent</span></li>
+                    <li>Statistics <span>good enough</span></li>
+                    <li>Algorhitms <span>good enough</span></li>
+                  </ul>
                 </div>
               </div>
-            )
-          })}
-
-          <div className={`certificatesWrapper ${styles.certificatesWrapper} `}>
-    
-            <div>
-              <div>
-                <span style={{textDecoration: 'lineThrough'}}>Certificates:</span>
-                {/* <span>University of Stavanger (Norway), April 2018</span> */}
-              </div>
-              <section className={`${styles.layer} layer`}></section>
-            </div>
-    
-            <div>
-              <div>
-                <span>Management of Offshore Field Development</span>
-                <span>University of Stavanger (Norway), April 2018</span>
-              </div>
-              <section className={`${styles.layer} layer`}></section>
-            </div>
-    
-            <div>
-              <div>
-                <span>Well controll</span>
-                <span>Saint Petersburg Mining University, May 2018</span>
-              </div>
-              <section className={`${styles.layer} layer`}></section>
-            </div>
-    
-            <div>
-              <div>
-                <span>H2S / SCBA training</span>
-                <span>Al Masaood oil industry supplies & services co.</span>
-              </div>
-              <section className={`${styles.layer} layer`}></section>
-            </div>
-          </div>
-
-        </section>
-
-        <section id={styles.section3} className='section'> 
-          <section>
-            <div className={`${styles.layer} layer`}>
-              <p id='quote'>
-                <span>&nbsp;“Here</span> 
-                <span>&nbsp;must</span> 
-                <span>&nbsp;be</span> 
-                <span>&nbsp;very</span> 
-                <span>&nbsp;smart</span> 
-                <span>&nbsp;and</span> 
-                <span>&nbsp;sharp</span> 
-                <span>&nbsp;words”</span> 
-                <br/><br/>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                <span>&#8212;&nbsp;Frederic</span>
-                <span>&nbsp;Schopengauer</span>
-              </p>
-            </div>
-            <div className={`${styles.layer} layer`}></div>
-
-            <div className={`${styles.layer} layer`}>
-              <h1>PROGRAMMING</h1>
-              <div className={`${styles.skillsGrid} skillsGrid`}>
+            </section>
+            <section>
+              <div className={`${styles.layer} layer`}>
+                <h1>ENGINEERING</h1>
+                <div className={`${styles.skillsGrid} skillsGrid`} style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
                 <ul>
-                  <li>Frontend developer <span>middle</span></li>
-                  <li>HTML <span>competent</span></li>
-                  <li>CSS <span>competent</span></li>
-                  <li>Javascript <span>competent</span></li>
-                </ul>
-                <ul>
-                  <li>React JS <span>competent</span></li>
-                  <li>Next JS <span>competent</span></li>
-                  <li>Material UI <span>competent</span></li>
-                  <li>Redux <span>competent</span></li>
-                </ul>
-                <ul>
-                  <li>Vim <span> good enough</span></li>
-                  <li>Chart JS <span>good enough</span></li>
-                  <li>GSAP <span>good enough</span></li>
-                  <li>Python <span>good enough</span></li>
-                </ul>
-                <ul>
-                  <li>Data scientist <span>junior</span></li>
-                  <li>Linear algebra <span>competent</span></li>
-                  <li>Statistics <span>good enough</span></li>
-                  <li>Algorhitms <span>good enough</span></li>
-                </ul>
+                    <li>Well designing <span>basic skills</span></li>
+                    <li>Calculate pipe and drill collar <span>basic skills</span></li>
+                    <li>Drilling process <span>basic skills</span></li>
+                    <li>Well controlling <span>basic skills</span></li>
+                  </ul>
+                  <ul>
+                    <li>Monitoring MWD & LWD parameters <span>assisted</span></li>
+                    <li>Recognize issues according to parameters above <span>assisted</span></li>
+                    <li>Preparation completion assemblies <span>assisted</span></li>
+                    <li>Pressure test of completion assemblies <span>assisted</span></li>
+                    {/* <li>Regulation drilling instrument <span>assisted</span></li> */}
+                  </ul>
+                  <ul>
+                    <li>Preparing mud <span>basic skills</span></li>
+                    <li>Mud checking <span>assisted</span></li>
+                    <li>Wiper trip procedures <span>assisted</span></li>
+                    <li>Shake tests <span>assisted</span></li>
+                  </ul>
+                </div>
               </div>
-            </div>
+            </section>
           </section>
-          <section>
-            <div className={`${styles.layer} layer`}>
-              <h1>ENGINEERING</h1>
-              <div className={`${styles.skillsGrid} skillsGrid`} style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
-              <ul>
-                  <li>Well designing <span>basic skills</span></li>
-                  <li>Calculate pipe and drill collar <span>basic skills</span></li>
-                  <li>Drilling process <span>basic skills</span></li>
-                  <li>Well controlling <span>basic skills</span></li>
-                </ul>
-                <ul>
-                  <li>Monitoring MWD & LWD parameters <span>assisted</span></li>
-                  <li>Recognize issues according to parameters above <span>assisted</span></li>
-                  <li>Preparation completion assemblies <span>assisted</span></li>
-                  <li>Pressure test of completion assemblies <span>assisted</span></li>
-                  {/* <li>Regulation drilling instrument <span>assisted</span></li> */}
-                </ul>
-                <ul>
-                  <li>Preparing mud <span>basic skills</span></li>
-                  <li>Mud checking <span>assisted</span></li>
-                  <li>Wiper trip procedures <span>assisted</span></li>
-                  <li>Shake tests <span>assisted</span></li>
-                </ul>
-              </div>
-            </div>
-          </section>
-        </section>
-        
-        <section id={styles.section4} className='section'>
-          <div>
-            <div id='circularTextWrapper' className={styles.circularTextWrapper}>
-              <Image src='/images/circle.svg' alt="Circular text" priority layout='fill'/>
-            </div>
-            
-            <div id='trainText' className={styles.trainText}>
-              <span>I</span>
-              <span>&nbsp;</span>
-              <span>a</span> 
-              <span>m</span>
-              <span>&nbsp;</span>
-              <span>a</span>
-              <span>v</span>
-              <span>a</span>
-              <span>i</span>
-              <span>l</span>
-              <span>a</span>
-              <span>b</span>
-              <span>l</span>
-              <span>e</span>
-              <span>&nbsp;</span>
-              <span>f</span>
-              <span>o</span>
-              <span>r</span>
-              <span>&nbsp;</span>
-              <span>i</span>
-              <span>n</span>
-              <span>t</span>
-              <span>e</span>
-              <span>r</span>
-              <span>e</span>
-              <span>s</span>
-              <span>t</span>
-              <span>i</span>
-              <span>n</span>
-              <span>g</span>
-              <span>&nbsp;</span>
-              <span>p</span>
-              <span>r</span>
-              <span>o</span>
-              <span>j</span>
-              <span>e</span>
-              <span>c</span>
-              <span>t</span>
-              <span>s</span>
-              <span>&nbsp;</span>
-              <span>a</span>
-              <span>n</span>
-              <span>d</span>
-              <span>&nbsp;</span>
-              <span>o</span>
-              <span>f</span>
-              <span>f</span>
-              <span>e</span>
-              <span>r</span>
-              <span>s</span>
-              <span>.</span>
-              <span>&nbsp;</span>
-              <span>F</span>
-              <span>e</span>
-              <span>e</span>
-              <span>l</span>
-              <span>&nbsp;</span>
-              <span>f</span>
-              <span>r</span>
-              <span>e</span>
-              <span>e</span>
-              <span>&nbsp;</span>
-              <span>t</span>
-              <span>o</span>
-              <span>&nbsp;</span>
-              <span>c</span>
-              <span>o</span>
-              <span>n</span>
-              <span>t</span>
-              <span>a</span>
-              <span>c</span>
-              <span>t</span>
-              <span>&nbsp;</span>
-              <span>m</span>
-              <span>e</span>
-            </div>
-            
-            <div id='contacts' className={styles.contacts}>
-              <div>
-                <div id='social' className={styles.social}>
-                  <span>ON SOCIAL MEDIA</span>
-                  {socials.map((obj)=>(
-                    <a key={obj.id} href={obj.url} target='_blank'>{obj.name}</a>
-                  ))}
-                </div>
-                <div id='social' className={styles.social}>
-                  <span>BY EMAIL</span>
-                  <label>verf631664@gmail.com</label>
-                  <label>rev631664@gmail.com</label>
-                </div>
-                <div id='noCookies' className={styles.noCookies}>
-                  <span>This webpage was created without using any cookies</span>
-                </div>
+          
+          <section id={styles.section4} className='section'>
+            <div>
+              <div id='circularTextWrapper' className={styles.circularTextWrapper}>
+                <Image src='/images/circle.svg' alt="Circular text" priority layout='fill'/>
               </div>
               
-              <div>
-                <div id='experience' className={styles.experience}>
-                  I have created many web applications for digitalization of certain procedures. But due to the privacy policies I am not able to share or demonstrate them to you.
-                </div>
-                <div id='authors' className={styles.authors}>
-                  <div>
-                    <span>Design</span>
-                    <a href='https://rubxkub.com/' target='_blank'>Gilles Tossoukpe</a>
+              <div id='trainText' className={styles.trainText}>
+                <span>I</span>
+                <span>&nbsp;</span>
+                <span>a</span> 
+                <span>m</span>
+                <span>&nbsp;</span>
+                <span>a</span>
+                <span>v</span>
+                <span>a</span>
+                <span>i</span>
+                <span>l</span>
+                <span>a</span>
+                <span>b</span>
+                <span>l</span>
+                <span>e</span>
+                <span>&nbsp;</span>
+                <span>f</span>
+                <span>o</span>
+                <span>r</span>
+                <span>&nbsp;</span>
+                <span>i</span>
+                <span>n</span>
+                <span>t</span>
+                <span>e</span>
+                <span>r</span>
+                <span>e</span>
+                <span>s</span>
+                <span>t</span>
+                <span>i</span>
+                <span>n</span>
+                <span>g</span>
+                <span>&nbsp;</span>
+                <span>p</span>
+                <span>r</span>
+                <span>o</span>
+                <span>j</span>
+                <span>e</span>
+                <span>c</span>
+                <span>t</span>
+                <span>s</span>
+                <span>&nbsp;</span>
+                <span>a</span>
+                <span>n</span>
+                <span>d</span>
+                <span>&nbsp;</span>
+                <span>o</span>
+                <span>f</span>
+                <span>f</span>
+                <span>e</span>
+                <span>r</span>
+                <span>s</span>
+                <span>.</span>
+                <span>&nbsp;</span>
+                <span>F</span>
+                <span>e</span>
+                <span>e</span>
+                <span>l</span>
+                <span>&nbsp;</span>
+                <span>f</span>
+                <span>r</span>
+                <span>e</span>
+                <span>e</span>
+                <span>&nbsp;</span>
+                <span>t</span>
+                <span>o</span>
+                <span>&nbsp;</span>
+                <span>c</span>
+                <span>o</span>
+                <span>n</span>
+                <span>t</span>
+                <span>a</span>
+                <span>c</span>
+                <span>t</span>
+                <span>&nbsp;</span>
+                <span>m</span>
+                <span>e</span>
+              </div>
+              
+              <div id='contacts' className={styles.contacts}>
+                <div>
+                  <div id='social' className={styles.social}>
+                    <span>ON SOCIAL MEDIA</span>
+                    {socials.map((obj)=>(
+                      <a key={obj.id} href={obj.url} target='_blank'>{obj.name}</a>
+                    ))}
                   </div>
-                  <div>
-                    <span>Code</span>
-                    <a>Muhammetnur Amandurdyev</a>
+                  <div id='social' className={styles.social}>
+                    <span>BY EMAIL</span>
+                    <label>verf631664@gmail.com</label>
+                    <label>rev631664@gmail.com</label>
+                  </div>
+                  <div id='noCookies' className={styles.noCookies}>
+                    <span>This webpage was created without using any cookies</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <div id='experience' className={styles.experience}>
+                    I have created many web applications for digitalization of certain procedures. But due to the privacy policies I am not able to share or demonstrate them to you.
+                  </div>
+                  <div id='authors' className={styles.authors}>
+                    <div>
+                      <span>Design</span>
+                      <a href='https://rubxkub.com/' target='_blank'>Gilles Tossoukpe</a>
+                    </div>
+                    <div>
+                      <span>Code</span>
+                      <a>Muhammetnur Amandurdyev</a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
 
+      </div>}
     </div>
   )
 }
