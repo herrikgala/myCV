@@ -231,8 +231,17 @@ export default function MainPage(props){
   }
 
   useEffect(()=>{
-    window.addEventListener('resize', ()=>{
-      window.location.reload(false);
+    let prevHeight = 0;
+
+    window.addEventListener('resize', (e)=>{
+
+      if(prevHeight<e.currentTarget.innerHeight){
+        
+      } else{
+        window.location.reload(false);
+      }
+      prevHeight = e.currentTarget.innerHeight;
+
     })
     let invalidProportion = window.innerWidth/window.innerHeight<1.6;
 
