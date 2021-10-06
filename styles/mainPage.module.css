@@ -141,6 +141,13 @@
 
 /* Third section (quote, images, skills) 🎃🎄🎈*/
 
+.quote{
+    position: absolute;
+    font-size: 4vw;
+    max-width: 80%;
+    color: black;
+    text-align: right;
+}
 
 #section3{
     position: fixed;
@@ -188,11 +195,11 @@
     align-items: center;
 }
 
-#section3 > section:nth-child(1) > .layer:nth-child(1) > p{
+/* #section3 > section:nth-child(1) > .layer:nth-child(1) > p{
     font-size: 4vw;
     max-width: 80%;
     color: black;
-}
+} */
 
 #section3 > section:nth-child(1) > .layer:nth-child(2){
     background-color: transparent;
