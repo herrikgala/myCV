@@ -64,7 +64,7 @@ const socials = [
   {
     id:1,
     name: 'Instagram',
-    url: 'https://www.instagram.com/nury.10/',
+    url: 'https://www.instagram.com/survnu/',
   },
   {
     id:2,
@@ -74,7 +74,7 @@ const socials = [
   {
     id: 3,
     name: 'Telegram',
-    url: 'https://t.me/Nury_Rev',
+    url: 'https://t.me/herrikgala',
   }
   
 ]
@@ -356,12 +356,12 @@ export default function MainPage(props){
                     letterSpacing: 0.3,
                     lineHeight: 1.2,
                   }}>
+                    
                     <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    Muhammetnur Amandurdyev is a turkmen programmer and engineer, leading frontend developer at the state frontier service of Turkmenistan,
-                    graduated engineer from Saint Petersburg Mining university. To date he has created more than 5 projects of different complexity. <br/>
+                    Hi! I'm a petroleum and software engineer who prioritizes performance and efficiency. <br/>
                     <span style={{overflow: 'hidden'}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    He creates user interfaces but also could manage backend side of apps.
-                    Muhammetnur Amandurdyev loves both the mountains and deserts of his beloved country and tries to improve his varied activities.
+                    My goal in life is to incorporate automation into everything I do. Starting with sending a letter via email, ending with complex engineering computations.<br/>
+                    Also i can create user interfaces using latest frameworks as “React” and “Vue”
                   </p>
                 <Image src='/images/sand.webp' alt="img" priority layout='responsive' width={902} height={570}/>
               </div>
@@ -389,7 +389,7 @@ export default function MainPage(props){
                     <div>
                       <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-end', alignItems: 'center'}}>
                       <div style={{width: `${aspectRatio1* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
-                          <Image src={obj.img1} layout='fill'/>
+                          <Image src={obj.img1} layout='fill' priority/>
                         </div>
                       </div>
                       
@@ -402,7 +402,7 @@ export default function MainPage(props){
                     <div>
                       <div style={{position:'absolute', padding: '0 1vw', width: '100%', top: '-32vh', height: '30vh', left: '0',display: 'flex', justifyContent: 'flex-start', alignItems: 'center'}}>
                         <div style={{width: `${aspectRatio2* 30}vh`, height: '30vh', position: 'relative', pointerEvents: 'none'}}>
-                          <Image src={obj.img2} layout='fill'/>
+                          <Image src={obj.img2} layout='fill' priority/>
                         </div>
                       </div>
 
@@ -499,57 +499,57 @@ export default function MainPage(props){
               <div className={`${styles.layer} layer`}></div>
 
               <div className={`${styles.layer} layer`}>
-                <h1>PROGRAMMING</h1>
+                <h1>SOFTWARE ENG.</h1>
                 <div className={`${styles.skillsGrid} skillsGrid`}>
                   <ul>
-                    <li>Frontend developer <span>middle</span></li>
-                    <li>HTML <span>competent</span></li>
-                    <li>CSS <span>competent</span></li>
-                    <li>Javascript <span>competent</span></li>
+                    <li>HTML5 <span>8 out of 10</span></li>
+                    <li>CSS3 <span>8 out of 10</span></li>
+                    <li>Responsive markup <span>7 out of 10</span></li>
+                    <li>Semantic markup <span>7 out of 10</span></li>
                   </ul>
                   <ul>
-                    <li>React JS <span>competent</span></li>
-                    <li>Next JS <span>competent</span></li>
-                    <li>Material UI <span>competent</span></li>
-                    <li>Redux <span>competent</span></li>
+                    <li>Javscript <span>9 out of 10</span></li>
+                    <li>React JS <span>9 out of 10</span></li>
+                    <li>Vue 3 <span>6 out of 10</span></li>
+                    <li>Redux Vuex <span>8 out of 10</span></li>
                   </ul>
                   <ul>
-                    <li>Vim <span> good enough</span></li>
-                    <li>Chart JS <span>good enough</span></li>
-                    <li>GSAP <span>good enough</span></li>
-                    <li>Python <span>good enough</span></li>
+                    <li>Design patterns <span> 7 out of 10</span></li>
+                    <li>Data structures <span>6 out of 10</span></li>
+                    <li>Algorhitms <span>6 out of 10</span></li>
+                    <li>Python <span>7 out of 10</span></li>
                   </ul>
                   <ul>
-                    <li>Data scientist <span>junior</span></li>
-                    <li>Linear algebra <span>competent</span></li>
-                    <li>Statistics <span>good enough</span></li>
-                    <li>Algorhitms <span>good enough</span></li>
+                    <li>Learning capability <span>10 out of 10</span></li>
+                    <li>Data scientist <span>3 out of 10</span></li>
+                    <li>Linear algebra <span>6 out of 10</span></li>
+                    <li>Statistics <span>6 out of 10</span></li>
                   </ul>
                 </div>
               </div>
             </section>
             <section>
               <div className={`${styles.layer} layer`}>
-                <h1>ENGINEERING</h1>
+                <h1>PETROLEUM ENG.</h1>
                 <div className={`${styles.skillsGrid} skillsGrid`} style={{gridTemplateColumns: '1fr 1fr 1fr'}}>
                 <ul>
-                    <li>Well designing <span>basic skills</span></li>
-                    <li>Calculate pipe and drill collar <span>basic skills</span></li>
-                    <li>Drilling process <span>basic skills</span></li>
-                    <li>Well controlling <span>basic skills</span></li>
+                    <li>Well designing <span>6 out of 10</span></li>
+                    <li>Calculate pipe and drill collar <span>6 out of 10</span></li>
+                    <li>Drilling process <span>6 out of 10</span></li>
+                    <li>Well controlling <span>6 out of 10</span></li>
                   </ul>
                   <ul>
-                    <li>Monitoring MWD & LWD parameters <span>assisted</span></li>
-                    <li>Recognize issues according to parameters above <span>assisted</span></li>
-                    <li>Preparation completion assemblies <span>assisted</span></li>
-                    <li>Pressure test of completion assemblies <span>assisted</span></li>
+                    <li>Willing to constantly learn <span>10 out of 10</span></li>
+                    <li>Monitoring MWD & LWD parameters <span>4 out of 10</span></li>
+                    <li>Preparation completion assemblies <span>4 out of 10</span></li>
+                    <li>Pressure test of completion assemblies <span>4 out of 10</span></li>
                     {/* <li>Regulation drilling instrument <span>assisted</span></li> */}
                   </ul>
                   <ul>
-                    <li>Preparing mud <span>basic skills</span></li>
-                    <li>Mud checking <span>assisted</span></li>
-                    <li>Wiper trip procedures <span>assisted</span></li>
-                    <li>Shake tests <span>assisted</span></li>
+                    <li>Physics <span>8 out of 10</span></li>
+                    <li>Math <span>8 out of 10</span></li>
+                    <li>Chemistry <span>7 out of 10</span></li>
+                    <li>Hydraulics <span>7 out of 10</span></li>
                   </ul>
                 </div>
               </div>
@@ -650,8 +650,8 @@ export default function MainPage(props){
                   </div>
                   <div id='social' className={styles.social}>
                     <span>BY EMAIL</span>
-                    <label>verf631664@gmail.com</label>
-                    <label>rev631664@gmail.com</label>
+                    <label><a href="mailto:verf631664@gmail.com" style={{paddingLeft: 0}}>verf631664@gmail.com</a></label>
+                    <label><a href="mailto:rev631664@gmail.com"></a>rev631664@gmail.com</label>
                   </div>
                   <div id='noCookies' className={styles.noCookies}>
                     <span>This webpage was created without using any cookies</span>
