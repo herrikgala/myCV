@@ -139,7 +139,7 @@ export default function MainPage(props){
         trigger: section1,
         pin: true,
         markers: false,
-        end: mobileCheck() ? '+=' + ((cv.length+6)*section2.offsetWidth): '+=' + ((cv.length+4)*section2.offsetWidth),
+        end: mobileCheck() ? '+=' + ((cv.length+6)*section2.offsetWidth): '+=' + ((cv.length+10)*section2.offsetWidth),
       }
     })
     // let array = Array.from(spans).reverse();
@@ -148,10 +148,10 @@ export default function MainPage(props){
     
     tl.from(spans, {yPercent: -300,stagger: 0.1, ease: 'back', duration: .6});
 
-    tl2.to(array1, {y: '-85vh', stagger: 0.4, ease: 'back', duration: 24});
-    tl2.to(array2, {y: '-85vh', stagger: 0.4, ease: 'back', duration: 24}, '<');
+    tl2.to(array1, {y: '-85vh', stagger: 0.4, ease: 'back', duration: 20});
+    tl2.to(array2, {y: '-85vh', stagger: 0.4, ease: 'back', duration: 20}, '<');
     tl2.to('#fixed', {width: '100vw', right:0, bottom: 0, ease: 'none', duration: 14}, '<+0.4');
-    tl2.from('#fixed p:nth-child(1)', {opacity: 0,  duration: 10}, '>');
+    tl2.from('#fixed p:nth-child(1)', {opacity: 0,  duration: 8}, '>');
     tl2.from(section2, {yPercent: 100, duration: 12, ease: 'none'},  'whiteBlackText');
     tl2.to('#fixed', {y: '-100vh', duration: 12, ease: 'none'}, 'whiteBlackText')
     // appearence
@@ -306,11 +306,13 @@ export default function MainPage(props){
       <div style={(alert || !ready) ? {opacity: 0}: {}}>
         <Head>
           <title>Muhammetnur Amandurdyev</title>
-          <meta name='descriptions' content='CV / Resume of turkmen programmer and engineer'/>
+          <meta name='Description' content='CV / Resume of turkmen programmer and engineer'/>
+          <meta name='Description' CONTENT='Author: M. Y. Amandurdyev, Developer: Muhammetnur Amandurdyýew'/>
           <meta name='robots' content='index, follow'/>
           <meta name='author' content='Muhammetnur Amandurdyev'/>
           <meta name='keywords' content='turkmen, Muhammetnur, Amandurdyev, Amandurdyyev, Amandurdyýew, Амандурдыев, Мухамметнур, cv, resume'/>
           <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+          <meta name="googlebot" content="notranslate" />
         </Head>
 
           <section id={styles.section1} className='section'>
